@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện Thi Tiếng Anh Toàn Diện - Lớp Của Ms Lê Hằng</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(-45deg, #8854C0, #FDCB6E, #00C9A7, #FF7675);
+            --primary-color: #8854C0;
+            --yellow-color: #FDCB6E;
+            --turquoise-color: #00C9A7;
+            --correct-color: #00D26A;
+            --correct-shadow: #00A352;
+            --wrong-color: #FF4757;
+            --wrong-shadow: #D63031;
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --text-main: #2D3436;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--primary-gradient);
+            background-size: 400% 400%;
+            animation: gradientAnim 14s ease infinite;
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px 12px;
+            color: var(--text-main);
+        }
+
+        @keyframes gradientAnim {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bg-patterns {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.12;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M9 24c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4zm32 16c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4zM12 50l3-3 3 3-3 3-3-3zm32-34l3-3 3 3-3 3-3-3z' fill='%23ffffff'/%3E%3C/svg%3E");
+            animation: patternScroll 25s linear infinite;
+        }
+
+        @keyframes patternScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
+        }
+
+        .container {
+            max-width: 760px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 6px 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+        }
+        .author-tag {
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: #6c5ce7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .notice-box {
+            background: #FFEAA7;
+            border: 3px dashed #FF9F43;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 0 #FAB1A0;
+            text-align: center;
+        }
+        .notice-title {
+            color: #D63031;
+            font-weight: 900;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+        .notice-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #2D3436;
+            font-weight: 700;
+        }
+
+        .quiz-card {
+            background: var(--card-bg);
+            border-radius: 22px;
+            padding: 22px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+            border: 3px solid #FFF;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed #E2E8F0;
+            padding-bottom: 10px;
+        }
+        .badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 0.85rem;
+            margin-right: 12px;
+            white-space: nowrap;
+            box-shadow: 0 3px 0 #6c5ce7;
+            margin-top: 2px;
+        }
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #2D3436;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .option-btn {
+            background: #FFFFFF;
+            border: 3px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 12px 18px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            box-shadow: 0 5px 0 #E2E8F0;
+            color: #4A5568;
+        }
+        .option-btn:hover:not(.disabled) {
+            transform: translateY(-2px) scale(1.002);
+            box-shadow: 0 7px 0 #CBD5E1;
+            border-color: #CBD5E1;
+            color: #1A202C;
+        }
+        .option-btn:active:not(.disabled) {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #CBD5E1;
+        }
+        
+        .option-btn.correct {
+            background-color: var(--correct-color) !important;
+            color: white !important;
+            border-color: var(--correct-shadow) !important;
+            box-shadow: 0 3px 0 var(--correct-shadow) !important;
+        }
+        .option-btn.wrong {
+            background-color: var(--wrong-color) !important;
+            color: white !important;
+            border-color: var(--wrong-shadow) !important;
+            box-shadow: 0 3px 0 var(--wrong-shadow) !important;
+        }
+        .option-btn.disabled {
+            cursor: not-allowed;
+            opacity: 0.85;
+        }
+
+        .explanation-box {
+            margin-top: 18px;
+            background: #FFFDF2;
+            border-left: 6px solid #F1C40F;
+            border-radius: 14px;
+            padding: 16px;
+            display: none;
+            animation: expandReveal 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
+        }
+        @keyframes expandReveal {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .exp-title {
+            font-weight: 900;
+            color: #B33771;
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+        .exp-section {
+            margin-bottom: 8px;
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+        .exp-section strong {
+            color: #2C3A47;
+        }
+        .sub-options-desc {
+            margin-left: 8px;
+            border-left: 2px dashed #CBD5E1;
+            padding-left: 10px;
+            margin-top: 4px;
+            background: rgba(0,0,0,0.01);
+        }
+
+        .shake {
+            animation: shakeCard 0.4s ease-in-out;
+        }
+        @keyframes shakeCard {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        .submit-container {
+            text-align: center;
+            margin: 35px 0;
+        }
+        .main-submit-btn {
+            background: #00D26A;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 900;
+            padding: 15px 42px;
+            border: none;
+            border-radius: 22px;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #00A352, 0 12px 24px rgba(0,0,0,0.15);
+            transition: all 0.15s;
+        }
+        .main-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 0 #00A352, 0 14px 26px rgba(0,0,0,0.2);
+        }
+        .main-submit-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #00A352;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.55);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; visibility: hidden; opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .popup-box {
+            background: white; border-radius: 26px; padding: 28px;
+            max-width: 500px; width: 92%; text-align: center;
+            box-shadow: 0 18px 36px rgba(0,0,0,0.25);
+            transform: scale(0.85); transition: all 0.3s ease;
+            border: 5px solid var(--primary-color);
+        }
+        .popup-overlay.show { visibility: visible; opacity: 1; }
+        .popup-overlay.show .popup-box { transform: scale(1); }
+        .score-num { font-size: 3.5rem; font-weight: 900; color: var(--primary-color); margin: 12px 0; }
+        .teacher-comment { background: #F8F9FA; padding: 15px; border-radius: 15px; font-weight: 700; color: #2D3436; margin-bottom: 20px; line-height: 1.55; border: 1px solid #E2E8F0; }
+        .restart-btn { background: var(--turquoise-color); color: white; border: none; padding: 12px 28px; font-weight: 900; border-radius: 15px; box-shadow: 0 4px 0 #00A88F; cursor: pointer; font-size: 1rem; }
+
+        #confetti-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-patterns"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="container">
+        
+        <header>
+            <div class="author-tag">Giáo viên tạo: Ms Lê Hằng English</div>
+        </header>
+
+        <div class="notice-box">
+            <div class="notice-title">⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</div>
+            <div class="notice-content">
+                Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.<br>
+                Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!<br>
+                <strong>* Kéo tới đâu, làm tới đó! *</strong>
+            </div>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="submit-container">
+            <button class="main-submit-btn" onclick="calculateFinalScore()">🎉 Nộp Bài Xem Kết Quả 🎉</button>
+        </div>
+
+    </div>
+
+    <div class="popup-overlay" id="result-modal">
+        <div class="popup-box">
+            <h2 style="color: #6c5ce7;">✨ Kết Quả Kiểm Tra ✨</h2>
+            <div class="score-num" id="score-text">0 / 50</div>
+            <div class="teacher-comment" id="comment-text">Nhận xét từ cô giáo...</div>
+            <button class="restart-btn" onclick="reloadQuizEngine()">Làm Lại Đề Thi 🔄</button>
+        </div>
+    </div>
+
+    <script>
+        // Cơ sở dữ liệu chứa toàn bộ câu hỏi từ 51 đến 100 đầy đủ không lỗi
+        const quizDatabase = [
+            {
+                id: 51,
+                prompt: "“Why don’t we spend money on research into solar energy?” Nga said<br>→ Nga suggested....................................",
+                options: [
+                    { key: "A", text: "Nga suggested spending money on research into solar energy." },
+                    { key: "B", text: "Nga suggested to spend money on research into solar energy." },
+                    { key: "C", text: "Nga suggested we spent money on research into solar energy." },
+                    { key: "D", text: "Nga suggested should spend money on research into solar energy." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: \"Tại sao chúng ta không chi tiền nghiên cứu về năng lượng mặt trời nhỉ?\" Nga nói.",
+                    vocab: [
+                        "A. Đúng cấu trúc suggest + V-ing đưa ra lời đề xuất hành động.",
+                        "B. Sai vì sau suggest không đi với động từ dạng to-V.",
+                        "C. Sai cấu trúc câu đề nghị giả định hiện tại.",
+                        "D. Sai vì thiếu chủ ngữ đứng trước từ 'should'."
+                    ],
+                    whyCorrect: "Cấu trúc đưa ra lời đề xuất, đề nghị: 'Why don't we + V-inf?' tương đương cấu trúc 'S + suggest + V-ing'.",
+                    whyIncorrect: "Các phương án B, C, D đều dùng sai cấu trúc ngữ pháp bắt buộc sau động từ suggest."
+                }
+            },
+            {
+                id: 52,
+                prompt: "People produce champagne in France.<br>→ Champagne ....................................",
+                options: [
+                    { key: "A", text: "Champagne is produce in France." },
+                    { key: "B", text: "Champagne are produced in France." },
+                    { key: "C", text: "Champagne was produced in France." },
+                    { key: "D", text: "Champagne is produced in France." }
+                ],
+                correctKey: "D",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Người ta sản xuất rượu sâm-panh ở Pháp.",
+                    vocab: [
+                        "A. Sai vì động từ chính 'produce' chưa đưa về dạng quá khứ phân từ P2.",
+                        "B. Sai vì 'Champagne' là danh từ không đếm được, phải đi với tobe số ít.",
+                        "C. Sai thì (câu gốc ở hiện tại đơn, không đổi sang quá khứ đơn).",
+                        "D. Đúng cấu trúc câu bị động ở thì hiện tại đơn."
+                    ],
+                    whyCorrect: "Cấu trúc bị động thì hiện tại đơn: 'S + is/are + P2'. Vì Champagne là danh từ không đếm được nên đi với 'is produced'.",
+                    whyIncorrect: "Các câu khác sai về dạng của động từ, sai thì hoặc chia sai hòa hợp số ít/số nhiều của tobe."
+                }
+            },
+            {
+                id: 53,
+                prompt: "“I want to be a doctor”, she said.<br>→ She said that ....................................",
+                options: [
+                    { key: "A", text: "She said that she wants to be a doctor." },
+                    { key: "B", text: "She said that she wanted to be a doctor." },
+                    { key: "C", text: "She said that I wanted to be a doctor." },
+                    { key: "D", text: "She said that she wanted being a doctor." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: \"Tôi muốn trở thành một bác sĩ\", cô ấy nói.",
+                    vocab: [
+                        "A. Chưa lùi thì động từ 'wants' về quá khứ.",
+                        "B. Đúng quy tắc chuyển đổi câu gián tiếp (đổi ngôi và lùi thì).",
+                        "C. Sai vì chưa đổi đại từ 'I' thành 'she'.",
+                        "D. Sau 'want' phải đi với to-V chứ không dùng V-ing."
+                    ],
+                    whyCorrect: "Khi chuyển từ câu trực tiếp sang gián tiếp với động từ tường thuật 'said': đại từ 'I' đổi thành 'she', động từ 'want' ở hiện tại đơn lùi thành 'wanted' ở quá khứ đơn.",
+                    whyIncorrect: "Các phương án khác vi phạm lỗi lùi thì, lỗi đổi ngôi hoặc sai cấu trúc động từ 'want'."
+                }
+            },
+            {
+                id: 54,
+                prompt: "He went to bed early because of his sickness.<br>→ Because he ....................................",
+                options: [
+                    { key: "A", text: "Because he was sick, he went to bed early." },
+                    { key: "B", text: "Because he was sickness, he went to bed early." },
+                    { key: "C", text: "Because he is sick, he went to bed early." },
+                    { key: "D", text: "Because he went to bed early, he was sick." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Anh ấy đi ngủ sớm vì bị ốm.",
+                    vocab: [
+                        "A. Đúng cấu trúc mệnh đề trạng ngữ chỉ lý do ở quá khứ.",
+                        "B. Sai vì 'sickness' là danh từ, không đứng sau tobe đóng vai trò tính từ miêu tả trạng thái.",
+                        "C. Sai thì động từ (câu gốc đang ở quá khứ đơn 'went').",
+                        "D. Đảo ngược sai hoàn toàn logic nguyên nhân - kết quả."
+                    ],
+                    whyCorrect: "Chuyển từ cụm danh từ chỉ lý do sang mệnh đề chỉ lý do: 'because of + cụm N (his sickness)' đổi thành 'because + S + V (he was sick)'.",
+                    whyIncorrect: "Các phương án khác dùng sai loại từ, sai thì hoặc viết ngược ý nghĩa logic của câu."
+                }
+            },
+            {
+                id: 55,
+                prompt: "She doesn’t know the answer, so she cannot tell you.<br>→ If she ....................................",
+                options: [
+                    { key: "A", text: "If she knows the answer, she can tell you." },
+                    { key: "B", text: "If she knew the answer, she could tell you." },
+                    { key: "C", text: "If she didn't know the answer, she could tell you." },
+                    { key: "D", text: "If she would know the answer, she could tell you." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Cô ấy không biết câu trả lời, vì vậy cô ấy không thể nói cho bạn.",
+                    vocab: [
+                        "A. Sai vì dùng điều kiện loại 1 (câu gốc là tình huống trái thực tế ở hiện tại).",
+                        "B. Đúng cấu trúc câu điều kiện loại 2 giả định trái thực tế.",
+                        "C. Sai nghĩa vì giữ nguyên thể phủ định.",
+                        "D. Sai ngữ pháp mệnh đề If của câu điều kiện không dùng 'would'."
+                    ],
+                    whyCorrect: "Tình huống hiện tại giả định trái thực tế phải dùng câu điều kiện loại 2: 'If + S + V-ed/V2, S + could/would + V-inf'. Câu gốc phủ định chuyển sang If phải thành khẳng định.",
+                    whyIncorrect: "A, C, D sai lệch về loại câu điều kiện hoặc sai hình thái ngữ pháp trong mệnh đề If."
+                }
+            },
+            {
+                id: 56,
+                prompt: "I am not as tall as Peter.<br>→ Peter is ....................................",
+                options: [
+                    { key: "A", text: "Peter is shorter than me." },
+                    { key: "B", text: "Peter is taller than me." },
+                    { key: "C", text: "Peter is more tall than me." },
+                    { key: "D", text: "Peter is as tall as me." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Tôi không cao bằng Peter.",
+                    vocab: [
+                        "A. Sai nghĩa logic (Tôi không cao bằng Peter nghĩa là Peter phải cao hơn tôi).",
+                        "B. Đúng ngữ pháp so sánh hơn với tính từ ngắn 'tall'.",
+                        "C. Sai vì 'tall' là tính từ ngắn, không dùng 'more'.",
+                        "D. Sai vì biến thành câu so sánh bằng."
+                    ],
+                    whyCorrect: "Chuyển đổi từ so sánh không bằng sang so sánh hơn với tính từ trái nghĩa: 'not as tall as' (không cao bằng) = 'taller than' (cao hơn) khi đổi ngược chủ ngữ.",
+                    whyIncorrect: "A sai logic nghĩa. C sai hình thái chia tính từ ngắn. D sai cấu trúc cấp độ so sánh."
+                }
+            },
+            {
+                id: 57,
+                prompt: "People speak English all over the world.<br>→ English ....................................",
+                options: [
+                    { key: "A", text: "English is spoke all over the world." },
+                    { key: "B", text: "English are spoken all over the world." },
+                    { key: "C", text: "English is spoken all over the world." },
+                    { key: "D", text: "English was spoken all over the world." }
+                ],
+                correctKey: "C",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Người ta nói tiếng Anh trên toàn thế giới.",
+                    vocab: [
+                        "A. Sai vì 'spoke' mới là dạng quá khứ V2, dạng P2 phải là 'spoken'.",
+                        "B. Sai vì English là danh từ số ít, không dùng 'are'.",
+                        "C. Đúng cấu trúc bị động hiện tại đơn.",
+                        "D. Sai thì động từ (câu gốc dùng động từ hiện tại 'speak')."
+                    ],
+                    whyCorrect: "Chuyển câu chủ động hiện tại đơn sang bị động: 'S + is/are + P2'. English đi với 'is spoken'.",
+                    whyIncorrect: "Các phương án còn lại dùng sai phân từ, sai chia hòa hợp tobe hoặc sai thì ngữ pháp."
+                }
+            },
+            {
+                id: 58,
+                prompt: "Many trees died because of the bad weather<br>→ Because the weather ....................................",
+                options: [
+                    { key: "A", text: "Because the weather was bad, many trees died." },
+                    { key: "B", text: "Because the weather bad, many trees died." },
+                    { key: "C", text: "Because the weather is bad, many trees died." },
+                    { key: "D", text: "Because the weather because of bad, many trees died." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Nhiều cây cối đã chết vì thời tiết xấu.",
+                    vocab: [
+                        "A. Đúng cấu trúc mệnh đề trạng ngữ nguyên nhân ở quá khứ đơn.",
+                        "B. Sai vì thiếu động từ tobe 'was' làm vị ngữ.",
+                        "C. Sai thì động từ (câu gốc dùng quá khứ đơn 'died').",
+                        "D. Viết lặp từ sai cấu trúc ngữ pháp."
+                    ],
+                    whyCorrect: "Biến đổi từ 'because of + cụm danh từ (the bad weather)' sang 'because + mệnh đề (the weather was bad)'. Phải dùng 'was' vì hành động 'died' xảy ra ở quá khứ.",
+                    whyIncorrect: "B thiếu động từ, C sai thì, D lỗi lặp từ chắp vá."
+                }
+            },
+            {
+                id: 59,
+                prompt: "He has been studying English for six years.<br>→ He started....................................",
+                options: [
+                    { key: "A", text: "He started to study English for six years." },
+                    { key: "B", text: "He started studying English six years ago." },
+                    { key: "C", text: "He started study English six years ago." },
+                    { key: "D", text: "He started has studied English six years ago." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Anh ấy đã học tiếng Anh được 6 năm rồi.",
+                    vocab: [
+                        "A. Sai vì cấu trúc 'started' không đi với khoảng thời gian dùng giới từ 'for'.",
+                        "B. Đúng cấu trúc 'started + V-ing + khoảng thời gian + ago'.",
+                        "C. Sai vì sau start phải là V-ing hoặc to-V, không dùng động từ nguyên mẫu không to.",
+                        "D. Sai vì ghép thừa trợ động từ hiện tại hoàn thành."
+                    ],
+                    whyCorrect: "Viết lại câu từ thì Hiện tại hoàn thành sang Quá khứ đơn: 'S + have/has + been + V-ing + for + khoảng thời gian' tương đương 'S + started + V-ing + khoảng thời gian + ago'.",
+                    whyIncorrect: "Các câu khác dùng sai hình thái động từ theo sau start hoặc dùng sai giới từ chỉ mốc thời gian."
+                }
+            },
+            {
+                id: 60,
+                prompt: "I don’t have the key, so I cannot get into the house<br>→ If I ....................................",
+                options: [
+                    { key: "A", text: "If I have the key, I can get into the house." },
+                    { key: "B", text: "If I had the key, I could get into the house." },
+                    { key: "C", text: "If I didn't have the key, I couldn't get into the house." },
+                    { key: "D", text: "If I had had the key, I could get into the house." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Tôi không có chìa khóa, vì vậy tôi không thể vào trong nhà.",
+                    vocab: [
+                        "A. Sai vì tình huống hiện tại phải dùng câu điều kiện loại 2, không dùng loại 1.",
+                        "B. Đúng cấu trúc câu điều kiện loại 2 (trái thực tế ở hiện tại).",
+                        "C. Giữ nguyên thể phủ định làm sai bản chất giả định.",
+                        "D. Sai vì đây là hình thái của điều kiện loại 3 (quá khứ)."
+                    ],
+                    whyCorrect: "Câu gốc đưa ra lý do ở hiện tại, khi viết lại bằng If phải dùng điều kiện loại 2: 'If + S + V-ed/V2, S + could/would + V-inf'. Phủ định biến thành khẳng định.",
+                    whyIncorrect: "A, C, D áp dụng sai loại câu điều kiện hoặc sai lệch thể khẳng/phủ định của giả thuyết."
+                }
+            },
+            {
+                id: 61,
+                prompt: "Japan will give 200 cherry trees to Hanoi in March 2016.<br>→ 200 cherry trees ....................................",
+                options: [
+                    { key: "A", text: "200 cherry trees will give to Hanoi in March 2016." },
+                    { key: "B", text: "200 cherry trees will be given to Hanoi by Japan in March 2016." },
+                    { key: "C", text: "200 cherry trees are given to Hanoi in March 2016." },
+                    { key: "D", text: "200 cherry trees would be given to Hanoi in March 2016." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Nhật Bản sẽ tặng 200 cây hoa anh đào cho Hà Nội vào tháng 3 năm 2016.",
+                    vocab: [
+                        "A. Sai vì đây là thể chủ động, cây hoa anh đào không tự tặng được.",
+                        "B. Đúng cấu trúc bị động thì tương lai đơn.",
+                        "C. Sai thì động từ (đổi tương lai đơn sang hiện tại đơn là sai).",
+                        "D. Dùng từ 'would' sai quy tắc câu bị động trực tiếp."
+                    ],
+                    whyCorrect: "Cấu trúc bị động thì tương lai đơn: 'S + will be + P2 + (by O)'. '200 cherry trees' là vật nên nhận tác động hành vi 'will be given'.",
+                    whyIncorrect: "Các phương án khác chia sai thể chủ động hoặc làm thay đổi thì gốc của câu."
+                }
+            },
+            {
+                id: 62,
+                prompt: "I started working in this factory 5 years ago.<br>→ I have ....................................",
+                options: [
+                    { key: "A", text: "I have started working in this factory for 5 years." },
+                    { key: "B", text: "I have worked in this factory 5 years ago." },
+                    { key: "C", text: "I have worked in this factory for 5 years." },
+                    { key: "D", text: "I have been working in this factory since 5 years." }
+                ],
+                correctKey: "C",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Tôi đã bắt đầu làm việc ở nhà máy này cách đây 5 năm.",
+                    vocab: [
+                        "A. Sai vì không dùng lại từ 'started' trong câu hiện tại hoàn thành mang nghĩa kéo dài.",
+                        "B. Sai vì 'ago' là dấu hiệu của quá khứ đơn, không đi với hiện tại hoàn thành.",
+                        "C. Đúng cấu trúc chuyển đổi hành động kéo dài sang hiện tại hoàn thành.",
+                        "D. Dùng giới từ 'since' sai (5 năm là khoảng thời gian phải đi với for)."
+                    ],
+                    whyCorrect: "Quy tắc chuyển đổi từ quá khứ đơn sang hiện tại hoàn thành: 'S + started + V-ing + khoảng thời gian + ago' chuyển thành 'S + have/has + P2 + for + khoảng thời gian'.",
+                    whyIncorrect: "A, B, D dùng sai từ chỉ thời gian hoặc lặp lại từ bắt đầu làm câu sai ngữ nghĩa."
+                }
+            },
+            {
+                id: 63,
+                prompt: "The weather was bad, but we went to school on time.<br>→ Although....................................",
+                options: [
+                    { key: "A", text: "Although the weather was bad, but we went to school on time." },
+                    { key: "B", text: "Although the weather was bad, we went to school on time." },
+                    { key: "C", text: "Although the bad weather, we went to school on time." },
+                    { key: "D", text: "Although the weather is bad, we went to school on time." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Thời tiết rất xấu, nhưng chúng tôi vẫn đi học đúng giờ.",
+                    vocab: [
+                        "A. Sai lỗi kinh điển: Trong tiếng Anh đã dùng Although thì không dùng liên từ 'but'.",
+                        "B. Đúng cấu trúc mệnh đề nhượng bộ: Although + mệnh đề.",
+                        "C. Sai vì sau Although phải là mệnh đề, không đi trực tiếp với cụm danh từ (cụm danh từ dùng In spite of/Despite).",
+                        "D. Sai thì động từ (câu gốc ở quá khứ đơn 'was')."
+                    ],
+                    whyCorrect: "Viết lại câu dùng liên từ nhượng bộ: 'Mệnh đề 1, but Mệnh đề 2' đổi thành 'Although Mệnh đề 1, Mệnh đề 2' (bỏ but).",
+                    whyIncorrect: "Các phương án khác mắc lỗi lặp liên từ, sai loại từ đứng sau hoặc chia sai thì động từ."
+                }
+            },
+            {
+                id: 64,
+                prompt: "They last visited their home village five years ago.<br>→ They haven’t....................................",
+                options: [
+                    { key: "A", text: "They haven't visited their home village for five years." },
+                    { key: "B", text: "They haven't visited their home village five years ago." },
+                    { key: "C", text: "They haven't last visited their home village for five years." },
+                    { key: "D", text: "They haven't visit their home village since five years." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Lần cuối cùng họ về thăm làng quê là cách đây 5 năm.",
+                    vocab: [
+                        "A. Đúng quy tắc chuyển đổi sang hiện tại hoàn thành phủ định phủ nhận hành động.",
+                        "B. Sai vì 'ago' không đứng trong câu hiện tại hoàn thành.",
+                        "C. Thừa từ 'last' làm câu lủng củng sai cấu trúc.",
+                        "D. Động từ 'visit' chưa chia phân từ P2 và dùng sai giới từ 'since'."
+                    ],
+                    whyCorrect: "Chuyển từ quá khứ đơn khẳng định sang hiện tại hoàn thành phủ định: 'S + last + V-ed + khoảng thời gian + ago' = 'S + haven't/hasn't + P2 + for + khoảng thời gian'.",
+                    whyIncorrect: "B, C, D vi phạm lỗi chia động từ hoặc dùng sai giới từ chỉ thời gian tương ứng."
+                }
+            },
+            {
+                id: 65,
+                prompt: "They must complete this test on time.<br>→ This test must....................................",
+                options: [
+                    { key: "A", text: "This test must complete on time." },
+                    { key: "B", text: "This test must be complete on time." },
+                    { key: "C", text: "This test must be completed on time." },
+                    { key: "D", text: "This test must been completed on time." }
+                ],
+                correctKey: "C",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Họ phải hoàn thành bài kiểm tra này đúng giờ.",
+                    vocab: [
+                        "A. Sai vì ở dạng chủ động, bài kiểm tra không tự hoàn thành được.",
+                        "B. Sai vì động từ 'complete' chưa đưa về dạng phân từ P2 thêm đuôi -ed.",
+                        "C. Đúng cấu trúc bị động của động từ khuyết thiếu.",
+                        "D. Dùng 'been' trực tiếp sau động từ khuyết thiếu là sai."
+                    ],
+                    whyCorrect: "Cấu trúc câu bị động với động từ khuyết thiếu (Modal Verbs): 'S + Modal Verb (must) + be + P2'. Do đó 'must be completed' là chính xác.",
+                    whyIncorrect: "Các phương án khác chia sai thể chủ động hoặc viết sai dạng thức phân từ của động từ hoàn thành."
+                }
+            },
+            {
+                id: 66,
+                prompt: "“What kind of books do you like best, Linda?” asked Peter.<br>→ Peter asked Linda what....................................",
+                options: [
+                    { key: "A", text: "Peter asked Linda what kind of books do you like best." },
+                    { key: "B", text: "Peter asked Linda what kind of books she liked best." },
+                    { key: "C", text: "Peter asked Linda what kind of books she likes best." },
+                    { key: "D", text: "Peter asked Linda what kind of books did she like best." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: \"Cậu thích loại sách nào nhất thế hả Linda?\" Peter hỏi.",
+                    vocab: [
+                        "A. Sai vì giữ nguyên cấu trúc câu hỏi trực tiếp và chưa đổi ngôi.",
+                        "B. Đúng quy tắc chuyển đổi câu hỏi có từ hỏi Wh- sang gián tiếp.",
+                        "C. Sai vì chưa lùi thì động từ 'likes' về quá khứ.",
+                        "D. Sai vì mượn trợ động từ đảo ngữ 'did' trong câu tường thuật gián tiếp."
+                    ],
+                    whyCorrect: "Khi chuyển câu hỏi Wh- sang gián tiếp: Giữ lại từ hỏi, đổi ngôi 'you' thành 'she' (Linda), động từ 'like' ở hiện tại lùi thành 'liked', bỏ trợ động từ đảo ngữ và viết theo trật tự câu khẳng định.",
+                    whyIncorrect: "A, C, D vi phạm nguyên tắc đổi ngôi, lùi thì hoặc trật tự từ của câu tường thuật gián tiếp."
+                }
+            },
+            {
+                id: 67,
+                prompt: "Let’s put the garbage bins around the schoolyard.<br>→ I suggest ....................................",
+                options: [
+                    { key: "A", text: "I suggest putting the garbage bins around the schoolyard." },
+                    { key: "B", text: "I suggest to put the garbage bins around the schoolyard." },
+                    { key: "C", text: "I suggest that we putted the garbage bins around the schoolyard." },
+                    { key: "D", text: "I suggest should put the garbage bins around the schoolyard." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Chúng ta hãy đặt các thùng rác xung quanh sân trường đi.",
+                    vocab: [
+                        "A. Đúng cấu trúc suggest + V-ing đưa ra lời đề xuất rủ rê.",
+                        "B. Sai vì sau suggest không đi với động từ dạng to-V.",
+                        "C. Sai vì động từ ở mệnh đề 'that' phải ở nguyên mẫu hoặc dùng should + V-inf, không chia quá khứ 'putted'.",
+                        "D. Thiếu chủ ngữ 'we' trước từ should."
+                    ],
+                    whyCorrect: "Cấu trúc câu rủ rê, gợi ý: 'Let's + V-inf' tương đương công thức rút gọn chủ ngữ 'S + suggest + V-ing'.",
+                    whyIncorrect: "Các lựa chọn còn lại vi phạm quy tắc chia động từ đi theo sau động từ suggest."
+                }
+            },
+            {
+                id: 68,
+                prompt: "The planet is Venus. The planet is closest to the Earth.<br>→ The planet which....................................",
+                options: [
+                    { key: "A", text: "The planet which is Venus is closest to the Earth." },
+                    { key: "B", text: "The planet which is closest to the Earth is Venus." },
+                    { key: "C", text: "The planet which closest to the Earth is Venus." },
+                    { key: "D", text: "The planet which is closest to the Earth it is Venus." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Hành tinh đó là Sao Kim. Hành tinh đó ở gần Trái Đất nhất.",
+                    vocab: [
+                        "A. Ghép sai logic thông tin bổ trợ mệnh đề quan hệ.",
+                        "B. Đúng cấu trúc đại từ quan hệ thay thế cho danh từ chỉ vật đóng vai trò chủ ngữ.",
+                        "C. Thiếu động từ tobe 'is' trong mệnh đề quan hệ.",
+                        "D. Thừa đại từ 'it' đứng trước động từ chính."
+                    ],
+                    whyCorrect: "Sử dụng đại từ quan hệ 'which' để nối hai câu độc lập: 'which' thay thế cho 'The planet' của câu thứ hai, biến câu thứ hai thành mệnh đề quan hệ chen vào giữa câu thứ nhất.",
+                    whyIncorrect: "A sai lệch logic, C thiếu động từ hệ thống, D phạm lỗi lặp chủ ngữ thừa thãi."
+                }
+            },
+            {
+                id: 69,
+                prompt: "People are going to build a new library in the area.<br>→ A new library ....................................",
+                options: [
+                    { key: "A", text: "A new library is going to build in the area." },
+                    { key: "B", text: "A new library is going to be built in the area." },
+                    { key: "C", text: "A new library are going to be built in the area." },
+                    { key: "D", text: "A new library will be going to build in the area." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Người ta sắp xây dựng một thư viện mới ở khu vực này.",
+                    vocab: [
+                        "A. Sai vì thiếu thành tố bị động 'be + P2', thư viện không tự xây được.",
+                        "B. Đúng cấu trúc câu bị động thì tương lai gần (Near Future Passive).",
+                        "C. Sai vì chủ ngữ 'A new library' là số ít, không đi với 'are'.",
+                        "D. Chắp vá sai cấu trúc kết hợp thì."
+                    ],
+                    whyCorrect: "Cấu trúc bị động của thì tương lai gần 'be going to': 'S + is/are/am + going to be + P2'. Do đó cụm 'is going to be built' là đáp án đúng.",
+                    whyIncorrect: "Các phương án khác lỗi chia sai dạng chủ động, sai tobe số ít/số nhiều hoặc sai cấu trúc gốc."
+                }
+            },
+            {
+                id: 70,
+                prompt: "\"What aspect of learning English do you find most difficult?\" she asked me.<br>→ She asked ....................................",
+                options: [
+                    { key: "A", text: "She asked me what aspect of learning English did I find most difficult." },
+                    { key: "B", text: "She asked me what aspect of learning English I found most difficult." },
+                    { key: "C", text: "She asked me what aspect of learning English I find most difficult." },
+                    { key: "D", text: "She asked what aspect of learning English you found most difficult." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: \"Khía cạnh nào của việc học tiếng Anh làm bạn thấy khó nhất?\" cô ấy hỏi tôi.",
+                    vocab: [
+                        "A. Sai vì mượn trợ động từ đảo ngữ 'did' trong câu tường thuật gián tiếp.",
+                        "B. Đúng quy tắc đổi ngôi và lùi thì câu hỏi Wh- sang gián tiếp.",
+                        "C. Sai vì động từ 'find' chưa lùi thì về quá khứ thành 'found'.",
+                        "D. Sai vì chưa đổi ngôi tân ngữ chỉ đối tượng."
+                    ],
+                    whyCorrect: "Khi chuyển đổi: thêm tân ngữ 'me', giữ nguyên cụm từ hỏi 'what aspect of learning English', đại từ 'you' đổi thành 'I', động từ 'find' lùi thì thành 'found' và loại bỏ trợ động từ do.",
+                    whyIncorrect: "A, C, D lỗi đảo ngữ, lỗi chưa lùi thì hoặc đổi sai đại từ nhân xưng gián tiếp."
+                }
+            },
+            {
+                id: 71,
+                prompt: "Lan said, “why don’t you ask the teacher to explain the question again?”<br>→ Lan asked me....................................",
+                options: [
+                    { key: "A", text: "Lan asked me why don't you ask the teacher to explain the question again." },
+                    { key: "B", text: "Lan asked me why I didn't ask the teacher to explain the question again." },
+                    { key: "C", text: "Lan asked me why didn't I ask the teacher to explain the question again." },
+                    { key: "D", text: "Lan asked me to ask the teacher explain the question again." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Lan nói, \"Tại sao bạn không nhờ giáo viên giải thích lại câu hỏi nhỉ?\"",
+                    vocab: [
+                        "A. Sai vì giữ nguyên nguyên văn câu nói trực tiếp và chưa đổi ngôi.",
+                        "B. Đúng cấu trúc câu hỏi Wh- khi chuyển sang câu gián tiếp.",
+                        "C. Sai vì đặt trợ động từ 'didn't' lên trước chủ ngữ làm sai trật tự từ gián tiếp.",
+                        "D. Sai cấu trúc từ nối hành động của cụm động từ explain."
+                    ],
+                    whyCorrect: "Câu hỏi gợi ý bản chất đổi sang gián tiếp: từ hỏi 'why', ngôi 'you' đổi thành 'I', phủ định 'don't' lùi thì thành 'didn't', sắp xếp theo trật tự câu khẳng định chủ ngữ đứng trước động từ.",
+                    whyIncorrect: "Các lựa chọn khác phạm lỗi đảo ngữ hoặc giữ nguyên từ gốc trực tiếp."
+                }
+            },
+            {
+                id: 72,
+                prompt: "It takes Minh 2 hours to do his homework everyday.<br>→ Minh spends....................................",
+                options: [
+                    { key: "A", text: "Minh spends 2 hours doing his homework everyday." },
+                    { key: "B", text: "Minh spends 2 hours to do his homework everyday." },
+                    { key: "C", text: "Minh spends 2 hours do his homework everyday." },
+                    { key: "D", text: "Minh spends for 2 hours doing his homework everyday." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Minh mất 2 tiếng đồng hồ để làm bài tập về nhà mỗi ngày.",
+                    vocab: [
+                        "A. Đúng cấu trúc tiêu tốn thời gian spends + V-ing.",
+                        "B. Sai vì sau spend là khoảng thời gian đi với V-ing, không dùng to-V.",
+                        "C. Dùng động từ nguyên mẫu không to là sai ngữ pháp.",
+                        "D. Thừa giới từ 'for' sau động từ spend."
+                    ],
+                    whyCorrect: "Cấu trúc hoán đổi tương đương chỉ việc dành thời gian làm gì: 'It takes + sb + thời gian + to-V' biến đổi thành mẫu 'S + spend + thời gian + V-ing'.",
+                    whyIncorrect: "B, C, D sử dụng sai hình thái động từ theo sau cấu trúc thời gian của spend hoặc thừa giới từ."
+                }
+            },
+            {
+                id: 73,
+                prompt: "We were late for school because of the heavy rain.<br>→ Because it ....................................",
+                options: [
+                    { key: "A", text: "Because it heavy rain, we were late for school." },
+                    { key: "B", text: "Because it rained heavily, we were late for school." },
+                    { key: "C", text: "Because it was rained heavily, we were late for school." },
+                    { key: "D", text: "Because it is raining heavily, we were late for school." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Chúng tôi bị muộn học vì cơn mưa lớn.",
+                    vocab: [
+                        "A. Sắp xếp sai trật tự từ mệnh đề vị ngữ.",
+                        "B. Đúng cấu trúc chuyển sang mệnh đề trạng ngữ chỉ thời tiết lý do ở quá khứ.",
+                        "C. Sai vì dùng 'was rained' biến thành câu bị động vô lý.",
+                        "D. Sai thì động từ (câu gốc đang ở quá khứ 'were late')."
+                    ],
+                    whyCorrect: "Chuyển cụm danh từ nguyên nhân 'because of + cụm N (the heavy rain)' sang mệnh đề 'because + S + V'. Danh từ rain chuyển thành động từ 'rained', tính từ heavy chuyển thành trạng từ 'heavily'.",
+                    whyIncorrect: "A thiếu động từ, C sai cấu trúc bị động, D chia sai thì hiện tại tiếp diễn lạc văn cảnh."
+                }
+            },
+            {
+                id: 74,
+                prompt: "\"I'm working in a restaurant.\" she said<br>→ She said ....................................",
+                options: [
+                    { key: "A", text: "She said I am working in a restaurant." },
+                    { key: "B", text: "She said she was working in a restaurant." },
+                    { key: "C", text: "She said she is working in a restaurant." },
+                    { key: "D", text: "She said she had been working in a restaurant." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: \"Tôi đang làm việc ở một nhà hàng\", cô ấy nói.",
+                    vocab: [
+                        "A. Sai vì chưa đổi ngôi và chưa lùi thì.",
+                        "B. Đúng quy tắc đổi câu gián tiếp thì hiện tại tiếp diễn sang quá khứ tiếp diễn.",
+                        "C. Sai vì giữ nguyên thì hiện tại tiếp diễn, chưa lùi thì.",
+                        "D. Lùi thì sai bậc ngữ pháp (biến thành quá khứ hoàn thành tiếp diễn)."
+                    ],
+                    whyCorrect: "Quy tắc tường thuật câu gián tiếp: đại từ 'I' chuyển thành 'she', động từ hiện tại tiếp diễn 'am working' lùi một thì thành quá khứ tiếp diễn 'was working'.",
+                    whyIncorrect: "Các phương án khác vi phạm nguyên tắc đổi ngôi đại từ nhân xưng hoặc lùi sai thì động từ."
+                }
+            },
+            {
+                id: 75,
+                prompt: "It’s two years since I last spoke to her.<br>→ I haven’t ....................................",
+                options: [
+                    { key: "A", text: "I haven't spoken to her for two years." },
+                    { key: "B", text: "I haven't spoken to her since two years." },
+                    { key: "C", text: "I haven't spoke to her for two years." },
+                    { key: "D", text: "I haven't last spoken to her two years ago." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Đã hai năm kể từ lần cuối cùng tôi nói chuyện với cô ấy.",
+                    vocab: [
+                        "A. Đúng quy tắc chuyển đổi cấu trúc thời gian sang hiện tại hoàn thành phủ định.",
+                        "B. Sai vì dùng giới từ 'since' trước một khoảng thời gian.",
+                        "C. Sai vì 'spoke' là dạng V2, động từ phân từ P2 của speak phải là 'spoken'.",
+                        "D. Chắp vá sai từ dấu hiệu 'ago' không đứng trong câu hiện tại hoàn thành."
+                    ],
+                    whyCorrect: "Cấu trúc hoán đổi mốc thời gian: 'It is + khoảng thời gian + since + S + last + V-ed' viết lại thành 'S + haven't/hasn't + P2 + for + khoảng thời gian'.",
+                    whyIncorrect: "B, C, D lỗi dùng sai giới từ thời gian, chia sai phân từ hoặc dùng nhầm dấu hiệu ago của quá khứ đơn."
+                }
+            },
+            {
+                id: 76,
+                prompt: "It is very difficult to learn English.<br>→ Learning English ....................................",
+                options: [
+                    { key: "A", text: "Learning English are very difficult." },
+                    { key: "B", text: "Learning English is very difficult." },
+                    { key: "C", text: "Learning English very difficult." },
+                    { key: "D", text: "Learning English is very difficulty." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Việc học tiếng Anh thì rất là khó.",
+                    vocab: [
+                        "A. Sai vì chủ ngữ danh động từ V-ing đóng vai trò số ít, không đi với 'are'.",
+                        "B. Đúng quy tắc dùng danh động từ (Gerund) làm chủ ngữ đi với tobe số ít.",
+                        "C. Thiếu động từ tobe 'is' làm liên từ vị ngữ.",
+                        "D. Sai vì 'difficulty' là danh từ, sau trạng từ bổ nghĩa 'very' phải là tính từ 'difficult'."
+                    ],
+                    whyCorrect: "Mẫu câu cấu trúc chủ ngữ giả định hoán hoán chuyển: 'It is + Adj + to-V' đổi thành 'V-ing + be số ít + Adj'. 'Learning English' là chủ ngữ số ít nên đi với 'is very difficult'.",
+                    whyIncorrect: "Các câu khác chia sai động từ hệ thống hoặc dùng nhầm lẫn loại từ danh/tính cuối câu."
+                }
+            },
+            {
+                id: 77,
+                prompt: "We have just bought a new house.<br>→ A new....................................",
+                options: [
+                    { key: "A", text: "A new house has just bought." },
+                    { key: "B", text: "A new house have just been bought." },
+                    { key: "C", text: "A new house has just been bought." },
+                    { key: "D", text: "A new house was just bought." }
+                ],
+                correctKey: "C",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Chúng tôi vừa mới mua một ngôi nhà mới.",
+                    vocab: [
+                        "A. Sai vì đây là dạng chủ động, ngôi nhà không tự đi mua được.",
+                        "B. Sai vì dùng trợ động từ số nhiều 'have' cho ngôi nhà số ít.",
+                        "C. Đúng cấu trúc câu bị động thì hiện tại hoàn thành.",
+                        "D. Sai thì động từ (đổi hiện tại hoàn thành sang quá khứ đơn là sai)."
+                    ],
+                    whyCorrect: "Bị động thì hiện tại hoàn thành: 'S + have/has + just been + P2'. Vì 'A new house' là chủ ngữ số ít nên đi kèm cụm 'has just been bought'.",
+                    whyIncorrect: "A thiếu thành tố bị động, B chia sai hòa hợp chủ vị trợ động từ, D chia sai thì gốc câu."
+                }
+            },
+            {
+                id: 78,
+                prompt: "“I must do all the housework now.” said Nam.<br>→ Nam ....................................",
+                options: [
+                    { key: "A", text: "Nam said he must do all the housework now." },
+                    { key: "B", text: "Nam said he had to do all the housework then." },
+                    { key: "C", text: "Nam said he has to do all the housework then." },
+                    { key: "D", text: "Nam said I had to do all the housework then." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: \"Tôi phải làm tất cả việc nhà bây giờ\", Nam nói.",
+                    vocab: [
+                        "A. Chưa biến đổi trạng từ chỉ thời gian 'now' thành 'then' và giữ nguyên từ must.",
+                        "B. Đúng quy tắc chuyển đổi câu tường thuật gián tiếp dạng bắt buộc.",
+                        "C. Sai vì động từ 'has' chưa lùi thì về quá khứ.",
+                        "D. Sai vì chưa đổi ngôi đại từ 'I' thành 'he'."
+                    ],
+                    whyCorrect: "Nguyên tắc gián tiếp: Đại từ 'I' thành 'he', động từ khuyết thiếu bắt buộc 'must' lùi thì chuyển thành 'had to', trạng từ thời gian 'now' đổi thành 'then'.",
+                    whyIncorrect: "Các phương án khác quên chưa đổi trạng từ thời gian, đổi ngôi hoặc lùi sai thì động từ khuyết thiếu."
+                }
+            },
+            {
+                id: 79,
+                prompt: "Can you type the letter right now?<br>→ The letter can....................................",
+                options: [
+                    { key: "A", text: "The letter can be typed right now?" },
+                    { key: "B", text: "Can the letter be typed right now?" },
+                    { key: "C", text: "Can the letter be type right now?" },
+                    { key: "D", text: "The letter can be type right now." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Bạn có thể đánh máy bức thư này ngay bây giờ không?",
+                    vocab: [
+                        "A. Sai trật tự đảo từ câu hỏi nghi vấn bị động.",
+                        "B. Đúng cấu trúc câu hỏi nghi vấn bị động với động từ khuyết thiếu 'Can'.",
+                        "C. Sai vì động từ 'type' chưa chia ở dạng phân từ quá khứ P2.",
+                        "D. Viết thành câu khẳng định làm mất đi tính chất câu hỏi nghi vấn gốc."
+                    ],
+                    whyCorrect: "Chuyển câu hỏi chủ động chứa động từ khuyết thiếu sang bị động: 'Can + S + be + P2?'. Do đó cụm 'Can the letter be typed right now?' đáp ứng đúng quy định.",
+                    whyIncorrect: "A lỗi trật tự từ hỏi, C sai hình thái chia phân từ, D sai kiểu câu khẳng định/nghi vấn."
+                }
+            },
+            {
+                id: 80,
+                prompt: "Helen plays the piano better than Elizabeth.<br>→ Elizabeth doesn’t ....................................",
+                options: [
+                    { key: "A", text: "Elizabeth doesn't play the piano as well as Helen." },
+                    { key: "B", text: "Elizabeth doesn't play the piano better than Helen." },
+                    { key: "C", text: "Elizabeth doesn't play the piano as good as Helen." },
+                    { key: "D", text: "Elizabeth doesn't play the piano worse than Helen." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Helen chơi đàn dương cầm giỏi hơn Elizabeth.",
+                    vocab: [
+                        "A. Đúng cấu trúc so sánh không bằng sử dụng trạng từ 'well'.",
+                        "B. Sai logic ý nghĩa thực tế câu gốc.",
+                        "C. Sai vì 'good' là tính từ, để bổ nghĩa cho động từ thường 'play' bắt buộc phải dùng trạng từ 'well'.",
+                        "D. Sai cấu trúc phủ định kết hợp từ so sánh kém."
+                    ],
+                    whyCorrect: "Chuyển đổi từ so sánh hơn sang so sánh không bằng: 'S1 + V + better than + S2' viết ngược lại thành dạng phủ định 'S2 + doesn't + V + as well as + S1'.",
+                    whyIncorrect: "Các phương án khác dùng sai loại từ tính/trạng hoặc làm thay đổi ý nghĩa logic ban đầu."
+                }
+            },
+            {
+                id: 81,
+                prompt: "He was punished because he behaved badly.<br>→ Because of ....................................",
+                options: [
+                    { key: "A", text: "Because of he behaved badly, he was punished." },
+                    { key: "B", text: "Because of his bad behavior, he was punished." },
+                    { key: "C", text: "Because of behaved badly, he was punished." },
+                    { key: "D", text: "Because of his badly behavior, he was punished." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Anh ấy đã bị phạt vì cư xử tồi tệ.",
+                    vocab: [
+                        "A. Sai vì sau Because of phải là cụm danh từ chứ không đi với mệnh đề.",
+                        "B. Đúng ngữ pháp biến đổi sang cụm danh từ sở hữu.",
+                        "C. Thiếu chủ ngữ sở hữu tính từ bổ trợ danh từ đứng sau.",
+                        "D. Dùng sai trạng từ 'badly' đứng trước danh từ (đúng phải dùng tính từ bad bổ nghĩa cho behavior)."
+                    ],
+                    whyCorrect: "Quy tắc hoán hoán đổi: 'Because + mệnh đề (he behaved badly)' chuyển thành 'Because of + cụm danh từ (his bad behavior)'.",
+                    whyIncorrect: "A vi phạm cấu trúc từ nối, C thiếu định ngữ sở hữu, D dùng sai loại từ tính trạng bổ trợ danh từ."
+                }
+            },
+            {
+                id: 82,
+                prompt: "Do you remember your first visit to Ho Chi Minh City?<br>→ You remember .................................... ?",
+                options: [
+                    { key: "A", text: "You remember your first visit to Ho Chi Minh City, don't you?" },
+                    { key: "B", text: "You remember your first visit to Ho Chi Minh City, do you?" },
+                    { key: "C", text: "Do you remember your first visit to Ho Chi Minh City?" },
+                    { key: "D", text: "You remember visiting Ho Chi Minh City first time, remember?" }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Bạn có nhớ lần đầu tiên đến thăm Thành phố Hồ Chí Minh không?",
+                    vocab: [
+                        "A. Đúng cấu trúc câu hỏi đuôi (Tag Question) khẳng định đi với phủ định.",
+                        "B. Sai quy tắc câu hỏi đuôi (vế đầu khẳng định thì đuôi phải phủ định).",
+                        "C. Viết lặp lại y hệt câu hỏi trực tiếp ban đầu.",
+                        "D. Diễn đạt sai cấu trúc văn phong chính quy."
+                    ],
+                    whyCorrect: "Chuyển câu hỏi nghi vấn Có/Không thành câu hỏi đuôi: Mệnh đề khẳng định hiện tại đơn 'You remember...', đuôi mượn trợ động từ phủ định tương ứng là 'don't you?'.",
+                    whyIncorrect: "Các phương án khác vi phạm luật kết hợp câu hỏi đuôi hoặc lặp cấu trúc đề bài."
+                }
+            },
+            {
+                id: 83,
+                prompt: "Why don’t we use banana leaves instead of plastics bags to save energy?<br>→ What about.................................... ?",
+                options: [
+                    { key: "A", text: "What about use banana leaves instead of plastic bags to save energy?" },
+                    { key: "B", text: "What about using banana leaves instead of plastic bags to save energy?" },
+                    { key: "C", text: "What about to use banana leaves instead of plastic bags to save energy?" },
+                    { key: "D", text: "What about we use banana leaves instead of plastic bags to save energy?" }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Tại sao chúng ta không dùng lá chuối thay vì túi nilon để tiết kiệm năng lượng nhỉ?",
+                    vocab: [
+                        "A. Dùng động từ nguyên mẫu sau giới từ 'about' là sai.",
+                        "B. Đúng cấu trúc đề xuất gợi ý What about + V-ing.",
+                        "C. Dùng động từ dạng 'to-use' sau giới từ là sai.",
+                        "D. Cấu trúc câu chắp vá chưa đúng ngữ pháp."
+                    ],
+                    whyCorrect: "Mẫu câu đưa ra ý kiến gợi ý tương đương: 'Why don't we + V-inf?' chuyển hóa đồng nghĩa hoàn toàn thành mẫu 'What about + V-ing?'.",
+                    whyIncorrect: "Các phương án A, C, D chia sai hình thái động từ bắt buộc đi liền kề sau giới từ about."
+                }
+            },
+            {
+                id: 84,
+                prompt: "They clean this room every day.<br>→ This room ....................................",
+                options: [
+                    { key: "A", text: "This room is cleaned every day." },
+                    { key: "B", text: "This room are cleaned every day." },
+                    { key: "C", text: "This room was cleaned every day." },
+                    { key: "D", text: "This room is clean every day." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Họ dọn dẹp căn phòng này mỗi ngày.",
+                    vocab: [
+                        "A. Đúng cấu trúc bị động thì hiện tại đơn chủ ngữ số ít.",
+                        "B. Sai vì chủ ngữ 'This room' là số ít, không đi với 'are'.",
+                        "C. Sai thì động từ (câu gốc ở hiện tại đơn động từ 'clean').",
+                        "D. Sai vì 'clean' mới là tính từ, thiếu động từ phân từ P2 cấu thành câu bị động hành động."
+                    ],
+                    whyCorrect: "Công thức bị động hiện tại đơn: 'S + is/are + P2'. Căn phòng số ít nhận tác động hành vi dọn dẹp dùng cụm 'is cleaned'.",
+                    whyIncorrect: "Các phương án khác chia sai hòa hợp chủ vị, sai thì hoặc thiếu đuôi phân từ quá khứ hành động."
+                }
+            },
+            {
+                id: 85,
+                prompt: "“Would you like to have some coffee?”, said Tom to Mary.<br>→ Tom invited Mary ....................................",
+                options: [
+                    { key: "A", text: "Tom invited Mary would like to have some coffee." },
+                    { key: "B", text: "Tom invited Mary to have some coffee." },
+                    { key: "C", text: "Tom invited Mary having some coffee." },
+                    { key: "D", text: "Tom invited Mary that she should have some coffee." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: \"Cậu có muốn uống chút cà phê không?\", Tom nói với Mary.",
+                    vocab: [
+                        "A. Chắp vá từ ngữ thừa thãi cấu trúc gián tiếp.",
+                        "B. Đúng cấu trúc câu tường thuật lời mời gián tiếp lịch sự.",
+                        "C. Sai vì sau cấu trúc invite bắt buộc là động từ dạng to-V, không dùng V-ing.",
+                        "D. Cách diễn đạt rườm rà sai quy tắc chuyển câu mời."
+                    ],
+                    whyCorrect: "Câu mời trực tiếp 'Would you like to + V?' khi chuyển sang gián tiếp áp dụng cấu trúc cố định gọn nghĩa: 'S + invite + sb + to-V' (Mời ai đó làm gì).",
+                    whyIncorrect: "A, C, D sử dụng sai cấu trúc chia động từ bổ trợ theo sau từ tường thuật invite."
+                }
+            },
+            {
+                id: 86,
+                prompt: "I cannot remember the man’s name. He phoned me last night.<br>→ The man whose ....................................",
+                options: [
+                    { key: "A", text: "The man whose name I cannot remember phoned me last night." },
+                    { key: "B", text: "The man whose phoned me last night I cannot remember his name." },
+                    { key: "C", text: "The man whose name I cannot remember he phoned me last night." },
+                    { key: "D", text: "The man whose name cannot remember phoned me last night." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Tôi không thể nhớ tên của người đàn ông đó. Anh ấy đã gọi điện cho tôi tối qua.",
+                    vocab: [
+                        "A. Đúng cấu trúc mệnh đề quan hệ chỉ sở hữu sử dụng 'whose'.",
+                        "B. Sắp xếp sai trật tự đại từ quan hệ sở hữu cách.",
+                        "C. Thừa đại từ chủ ngữ 'he' đứng lặp lại trong câu phức.",
+                        "D. Thiếu chủ ngữ 'I' thực hiện hành vi tâm lý không nhớ tên."
+                    ],
+                    whyCorrect: "Sử dụng tính từ quan hệ sở hữu 'whose' thay thế cho tính từ sở hữu 'the man's'. Công thức liên kết đứng đầu mệnh đề quan hệ bổ trợ danh từ: 'whose + danh từ sở hữu (name) + S + V'.",
+                    whyIncorrect: "Các phương án khác phạm lỗi thừa từ chủ ngữ, thiếu từ thực hiện hành động hoặc đặt sai vị trí đại từ quan hệ."
+                }
+            },
+            {
+                id: 87,
+                prompt: "People don’t understand him because he doesn’t speak clearly<br>→ If ....................................",
+                options: [
+                    { key: "A", text: "If he speaks clearly, people will understand him." },
+                    { key: "B", text: "If he spoke clearly, people would understand him." },
+                    { key: "C", text: "If he didn't speak clearly, people wouldn't understand him." },
+                    { key: "D", text: "If he spoke clearly, people wouldn't understand him." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Mọi người không hiểu anh ấy vì anh ấy nói không rõ ràng.",
+                    vocab: [
+                        "A. Sai vì dùng điều kiện loại 1 (tình huống hiện tại phải dùng điều kiện loại 2).",
+                        "B. Đúng cấu trúc câu điều kiện loại 2 giả định ngược lại thực tế.",
+                        "C. Sai nghĩa vì giữ nguyên thể phủ định của mệnh đề nguyên nhân kết quả.",
+                        "D. Viết sai nghĩa logic mệnh đề chính kết quả."
+                    ],
+                    whyCorrect: "Giả định trái ngược với sự thật ở hiện tại: dùng câu điều kiện loại 2 'If + S + V-ed/V2, S + would + V-inf'. Phủ định câu gốc đổi sang If phải biến thành khẳng định.",
+                    whyIncorrect: "A, C, D sai loại câu điều kiện giả định hoặc sai bản chất logic khẳng/phủ định của câu."
+                }
+            },
+            {
+                id: 88,
+                prompt: "The last time she went out with him was 2 years ago.<br>→ She hasn’t ....................................",
+                options: [
+                    { key: "A", text: "She hasn't gone out with him for 2 years." },
+                    { key: "B", text: "She hasn't gone out with him 2 years ago." },
+                    { key: "C", text: "She hasn't gone out with him since 2 years." },
+                    { key: "D", text: "She hasn't go out with him for 2 years." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Lần cuối cùng cô ấy đi chơi với anh ta là cách đây 2 năm.",
+                    vocab: [
+                        "A. Đúng cấu trúc hiện tại hoàn thành phủ định chỉ hành động dừng lại bao lâu.",
+                        "B. Dùng từ 'ago' sai ngữ pháp câu hiện tại hoàn thành.",
+                        "C. Dùng giới từ 'since' sai trước một khoảng thời gian đếm được.",
+                        "D. Động từ 'go' chưa chia về dạng phân từ P2 'gone'."
+                    ],
+                    whyCorrect: "Cấu trúc hoán đổi thời gian: 'The last time + S + V-ed + was + khoảng thời gian + ago' chuyển tương đương thành mẫu 'S + hasn't/haven't + P2 + for + khoảng thời gian'.",
+                    whyIncorrect: "Các lựa chọn khác sai giới từ thời gian, chia sai động từ hoặc dùng nhầm dấu hiệu ago."
+                }
+            },
+            {
+                id: 89,
+                prompt: "He often went swimming when he was a boy.<br>→ He used ....................................",
+                options: [
+                    { key: "A", text: "He used to go swimming when he was a boy." },
+                    { key: "B", text: "He used to going swimming when he was a boy." },
+                    { key: "C", text: "He used to went swimming when he was a boy." },
+                    { key: "D", text: "He used often to go swimming when he was a boy." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Anh ấy thường đi bơi khi còn là một cậu bé.",
+                    vocab: [
+                        "A. Đúng cấu trúc used to chỉ thói quen trong quá khứ.",
+                        "B. Sai vì sau used to là động từ nguyên mẫu, không dùng đuôi -ing.",
+                        "C. Động từ 'went' chưa đưa về nguyên mẫu 'go' sau từ nối to.",
+                        "D. Thừa trạng từ tần suất 'often' vì bản thân used to đã bao hàm nghĩa thường xuyên trong quá khứ."
+                    ],
+                    whyCorrect: "Diễn tả hành động thói quen cũ đã chấm dứt trong quá khứ: 'S + often + V-ed' viết lại tương đương thành cấu trúc 'S + used to + V-inf'.",
+                    whyIncorrect: "B, C, D áp dụng sai hình thái động từ đứng sau to hoặc lặp thừa từ trạng từ tần suất."
+                }
+            },
+            {
+                id: 90,
+                prompt: "The scientist has won the Nobel Prize because he discovered a new planet.<br>→ The scientist who ....................................",
+                options: [
+                    { key: "A", text: "The scientist who discovered a new planet he has won the Nobel Prize." },
+                    { key: "B", text: "The scientist who discovered a new planet has won the Nobel Prize." },
+                    { key: "C", text: "The scientist who has won the Nobel Prize discovered a new planet." },
+                    { key: "D", text: "The scientist who wins the Nobel Prize discovered a new planet." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Nhà khoa học đã giành giải Nobel vì ông ấy đã phát hiện ra một hành tinh mới.",
+                    vocab: [
+                        "A. Sai lỗi lặp chủ ngữ thừa đại từ 'he' đứng sau mệnh đề quan hệ.",
+                        "B. Đúng cấu trúc mệnh đề quan hệ xác định chủ thể thực hiện hành vi.",
+                        "C. Viết đảo ngược thông tin nguyên nhân hệ quả chưa chuẩn nghĩa logic.",
+                        "D. Chia sai thì động từ trong mệnh đề chính quan hệ."
+                    ],
+                    whyCorrect: "Dùng đại từ quan hệ 'who' thay thế cho 'he' làm chủ ngữ chỉ người, lồng mệnh đề nguyên nhân làm mệnh đề quan hệ đứng ngay sau danh từ trung tâm 'The scientist'.",
+                    whyIncorrect: "Các phương án khác vi phạm lỗi lặp thừa đại từ nhân xưng hoặc đảo lộn sai nghĩa logic thông tin gốc."
+                }
+            },
+            {
+                id: 91,
+                prompt: "The test was not easy enough for her to do.<br>→ The test was too ....................................",
+                options: [
+                    { key: "A", text: "The test was too easy for her to do." },
+                    { key: "B", text: "The test was too difficult for her to do." },
+                    { key: "C", text: "The test was too difficult that she couldn't do it." },
+                    { key: "D", text: "The test was too hard for her doing." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Bài kiểm tra không đủ dễ để cô ấy có thể làm được.",
+                    vocab: [
+                        "A. Sai nghĩa logic (Không đủ dễ nghĩa là quá khó chứ không phải quá dễ).",
+                        "B. Đúng cấu trúc too... for sb to-V kết hợp tính từ trái nghĩa.",
+                        "C. Sai cấu trúc pha trộn lai căng giữa cấu trúc too và cấu trúc so...that.",
+                        "D. Sai vì sau cấu trúc too... to phải là động từ nguyên mẫu, không dùng đuôi -ing."
+                    ],
+                    whyCorrect: "Mẫu câu cấu trúc biến đổi tính từ trái nghĩa tương đương: 'S + be + not + Adj (ngắn) + enough + for sb + to-V' = 'S + be + too + Adj (trái nghĩa) + for sb + to-V'. Trái nghĩa của easy là difficult/hard.",
+                    whyIncorrect: "A phản nghĩa logic, C sai công thức ngữ pháp, D chia sai hình thái động từ hành vi."
+                }
+            },
+            {
+                id: 92,
+                prompt: "“Are you writing to your pen pal now?”<br>→ He asked me ....................................",
+                options: [
+                    { key: "A", text: "He asked me if I was writing to my pen pal now." },
+                    { key: "B", text: "He asked me if I was writing to my pen pal then." },
+                    { key: "C", text: "He asked me whether I am writing to my pen pal then." },
+                    { key: "D", text: "He asked me if you were writing to your pen pal then." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: \"Bây giờ bạn đang viết thư cho bạn qua thư của bạn phải không?\"",
+                    vocab: [
+                        "A. Chưa đổi trạng từ chỉ thời gian 'now' thành 'then'.",
+                        "B. Đúng quy tắc câu tường thuật gián tiếp câu hỏi Có/Không (Yes/No Question).",
+                        "C. Chưa lùi thì hệ động từ tiếp diễn về quá khứ.",
+                        "D. Chưa đổi ngôi đại từ nhân xưng 'you' và tính từ sở hữu 'your'."
+                    ],
+                    whyCorrect: "Quy tắc chuyển câu hỏi Yes/No sang gián tiếp: Thêm 'if/whether', đổi ngôi 'you' thành 'I', 'your' thành 'my', lùi thì hiện tại tiếp diễn thành quá khứ tiếp diễn 'was writing', đổi 'now' thành 'then'.",
+                    whyIncorrect: "Các phương án khác lỗi quên lùi thì, lỗi giữ nguyên trạng từ thời gian hoặc đổi sai đại từ."
+                }
+            },
+            {
+                id: 93,
+                prompt: "“Do you like watching documentary?” he said to me.<br>→ He asked me....................................",
+                options: [
+                    { key: "A", text: "He asked me if I liked watching documentary." },
+                    { key: "B", text: "He asked me did I like watching documentary." },
+                    { key: "C", text: "He asked me if I like watching documentary." },
+                    { key: "D", text: "He asked me whether I liked watch documentary." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: \"Bạn có thích xem phim tài liệu không?\" anh ấy nói với tôi.",
+                    vocab: [
+                        "A. Đúng quy tắc đổi ngôi lùi thì viết dưới dạng câu khẳng định gián tiếp.",
+                        "B. Sai vì mượn trợ động từ đảo ngữ 'did' đứng trước chủ ngữ.",
+                        "C. Chưa lùi thì động từ 'like' ở hiện tại về quá khứ đơn.",
+                        "D. Sai vì sau động từ yêu thích like phải là V-ing 'watching', không dùng động từ nguyên mẫu bare."
+                    ],
+                    whyCorrect: "Tường thuật câu hỏi Yes/No hiện tại đơn: Thêm từ nối 'if/whether', chủ ngữ 'you' đổi thành 'I', động từ 'like' lùi thì thành 'liked', loại bỏ hoàn toàn trợ động từ do.",
+                    whyIncorrect: "B vấp lỗi đảo ngữ câu hỏi, C lỗi chưa lùi thì động từ, D chia sai động từ đi sau sở thích like."
+                }
+            },
+            {
+                id: 94,
+                prompt: "Hoa is busy now, so she can’t help her mother with the housework.<br>→ If ....................................",
+                options: [
+                    { key: "A", text: "If Hoa isn't busy now, she can help her mother with the housework." },
+                    { key: "B", text: "If Hoa weren't busy now, she could help her mother with the housework." },
+                    { key: "C", text: "If Hoa were busy now, she couldn't help her mother with the housework." },
+                    { key: "D", text: "If Hoa hadn't been busy now, she could have helped her mother." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Hoa hiện tại đang bận, vì vậy cô ấy không thể giúp mẹ làm việc nhà.",
+                    vocab: [
+                        "A. Dùng câu điều kiện loại 1 sai quy tắc giả định tình huống hiện tại.",
+                        "B. Đúng cấu trúc câu điều kiện loại 2 giả định trái thực tế.",
+                        "C. Sai nghĩa vì viết giả thuyết thuận chiều thực tế bận rộn.",
+                        "D. Dùng câu điều kiện loại 3 sai ngữ cảnh mốc thời gian."
+                    ],
+                    whyCorrect: "Tình huống trái ngược hiện tại: áp dụng điều kiện loại 2 'If + S + V-ed/were, S + could/would + V-inf'. Khẳng định câu gốc đổi sang If biến thành phủ định và ngược lại.",
+                    whyIncorrect: "Các phương án khác dùng sai loại câu điều kiện hoặc đặt mệnh đề giả thiết đồng thuận thực tế."
+                }
+            },
+            {
+                id: 95,
+                prompt: "They suggested banning advertisements on TV.<br>→ They suggested that advertisements ....................................",
+                options: [
+                    { key: "A", text: "They suggested that advertisements on TV should ban." },
+                    { key: "B", text: "They suggested that advertisements on TV should be banned." },
+                    { key: "C", text: "They suggested that advertisements on TV be banning." },
+                    { key: "D", text: "They suggested that advertisements on TV must be banned." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Họ đã đề xuất cấm quảng cáo trên truyền hình.",
+                    vocab: [
+                        "A. Sai dạng chủ động vì quảng cáo không tự thực hiện hành vi cấm đoán.",
+                        "B. Đúng cấu trúc giả định bị động đi kèm từ nối 'that'.",
+                        "C. Chia sai động từ dạng đuôi -ing vô nghĩa.",
+                        "D. Dùng từ 'must' sai quy tắc cấu trúc giả định của suggest."
+                    ],
+                    whyCorrect: "Mệnh đề giả định bị động đứng sau từ gợi ý: 'S1 + suggest + that + S2 + should be + P2' hoặc bỏ should giữ nguyên thể bare bị động. Phương án B đáp ứng chuẩn công thức.",
+                    whyIncorrect: "Các lựa chọn khác sai thể chủ động hoặc áp dụng sai từ khuyết thiếu quy định mệnh đề giả định."
+                }
+            },
+            {
+                id: 96,
+                prompt: "He not only sings well but also dances beautifully.<br>→ Not only....................................",
+                options: [
+                    { key: "A", text: "Not only he sings well but he also dances beautifully." },
+                    { key: "B", text: "Not only does he sing well but he also dances beautifully." },
+                    { key: "C", text: "Not only does he sings well but also dances beautifully." },
+                    { key: "D", text: "Not only he does sing well but also dances beautifully." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Anh ấy không chỉ hát hay mà còn nhảy múa đẹp mắt.",
+                    vocab: [
+                        "A. Thiếu đảo ngữ ở vế đầu câu chứa từ phủ định đứng trước.",
+                        "B. Đúng cấu trúc đảo ngữ toàn diện với liên từ nhấn mạnh 'Not only'.",
+                        "C. Sai vì động từ 'sings' chưa bỏ đuôi s về nguyên mẫu sau khi mượn trợ động từ does.",
+                        "D. Đặt trợ động từ sai vị trí cú pháp đảo ngữ."
+                    ],
+                    whyCorrect: "Công thức đảo ngữ nhấn mạnh không những... mà còn: 'Not only + trợ động từ (does) + S + V-inf + but + S + also + V2'. Do đó câu B tuân thủ chuẩn xác.",
+                    whyIncorrect: "A, C, D lỗi thiếu đảo ngữ đảo từ hoặc quên chưa nguyên thể hóa động từ chính đứng sau."
+                }
+            },
+            {
+                id: 97,
+                prompt: "My parents will sell the house in the country.<br>→ The house in the country....................................",
+                options: [
+                    { key: "A", text: "The house in the country will sell by my parents." },
+                    { key: "B", text: "The house in the country will be sold by my parents." },
+                    { key: "C", text: "The house in the country is sold by my parents." },
+                    { key: "D", text: "The house in the country would be sold by my parents." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Bố mẹ tôi sẽ bán ngôi nhà ở vùng nông thôn.",
+                    vocab: [
+                        "A. Sai thể chủ động, ngôi nhà ở quê không tự thực hiện hành vi bán.",
+                        "B. Đúng cấu trúc câu bị động ở thì tương lai đơn.",
+                        "C. Sai thì động từ (đổi tương lai đơn sang hiện tại đơn là sai).",
+                        "D. Dùng từ 'would' sai quy tắc biến đổi bị động trực tiếp."
+                    ],
+                    whyCorrect: "Công thức chuyển câu bị động tương lai đơn: 'S + will be + P2 + by O'. Ngôi nhà nhận tác động hành vi dùng cụm 'will be sold by my parents'.",
+                    whyIncorrect: "Các câu còn lại lỗi dùng sai dạng chủ động, chia sai lệch thì gốc câu hỏi ban đầu."
+                }
+            },
+            {
+                id: 98,
+                prompt: "I'm sorry David cannot be in Hue for the festival.<br>→ I wish....................................",
+                options: [
+                    { key: "A", text: "I wish David can be in Hue for the festival." },
+                    { key: "B", text: "I wish David could be in Hue for the festival." },
+                    { key: "C", text: "I wish David couldn't be in Hue for the festival." },
+                    { key: "D", text: "I wish David would be in Hue for the festival." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Tôi rất tiếc vì David không thể có mặt ở Huế tham gia lễ hội.",
+                    vocab: [
+                        "A. Chưa lùi thì động từ khuyết thiếu 'can' về quá khứ.",
+                        "B. Đúng cấu trúc câu ao ước trái thực tế ở hiện tại.",
+                        "C. Giữ nguyên nghĩa phủ định 'couldn't' làm sai bản chất mong ước.",
+                        "D. Dùng từ 'would' chưa sát văn cảnh ước muốn về năng lực điều kiện có thể."
+                    ],
+                    whyCorrect: "Câu ước trái thực tế hiện tại biến đổi từ lời lấy làm tiếc: 'I'm sorry + S + cannot + V' chuyển đổi thành mẫu câu mong ước 'I wish + S + could + V-inf'.",
+                    whyIncorrect: "A lỗi thiếu lùi thì, C viết sai bản chất khẳng/phủ định mong cầu, D sai lệch từ khuyết thiếu."
+                }
+            },
+            {
+                id: 99,
+                prompt: "If the man doesn't arrive, we will start the conference without him.<br>→ Unless ....................................",
+                options: [
+                    { key: "A", text: "Unless the man doesn't arrive, we will start the conference without him." },
+                    { key: "B", text: "Unless the man arrives, we will start the conference without him." },
+                    { key: "C", text: "Unless the man arrive, we will start the conference without him." },
+                    { key: "D", text: "Unless the man will arrive, we will start the conference without him." }
+                ],
+                correctKey: "B",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Nếu người đàn ông đó không đến, chúng ta sẽ bắt đầu hội nghị mà không có ông ấy.",
+                    vocab: [
+                        "A. Sai lỗi kinh điển: Trong mệnh đề chứa 'Unless' không dùng thể phủ định 'doesn't'.",
+                        "B. Đúng cấu trúc thay thế liên từ Unless tương đương điều kiện loại 1.",
+                        "C. Sai vì chủ ngữ 'the man' là số ít, động từ arrive phải thêm đuôi s/es.",
+                        "D. Sai ngữ pháp mệnh đề điều kiện của Unless không đi kèm động từ khuyết thiếu 'will'."
+                    ],
+                    whyCorrect: "Bản chất liên từ 'Unless' bằng với cụm từ 'If... not'. Khi viết lại câu: loại bỏ 'If' và trợ động từ phủ định 'doesn't', động từ chính chia lại khẳng định theo chủ ngữ số ít thành 'arrives'.",
+                    whyIncorrect: "A mắc lỗi phủ định kép, C chia sai hòa hợp chủ vị động từ, D sai cấu tạo mệnh đề giả thiết."
+                }
+            },
+            {
+                id: 100,
+                prompt: "My boyfriend is now in the hospital. He was injured in the accident.<br>→ My boyfriend, who....................................",
+                options: [
+                    { key: "A", text: "My boyfriend, who was injured in the accident, is now in the hospital." },
+                    { key: "B", text: "My boyfriend, who is now in the hospital, was injured in the accident." },
+                    { key: "C", text: "My boyfriend, who injured in the accident, is now in the hospital." },
+                    { key: "D", text: "My boyfriend, who was injured in the accident is now in the hospital." }
+                ],
+                correctKey: "A",
+                explanation: {
+                    translation: "Dịch nghĩa câu gốc: Bạn trai của tôi hiện đang ở trong bệnh viện. Anh ấy đã bị thương trong vụ tai nạn.",
+                    vocab: [
+                        "A. Đúng cấu trúc mệnh đề quan hệ không xác định có sử dụng dấu phẩy ngăn cách hợp lý.",
+                        "B. Viết đảo lộn thông tin vị ngữ chính phụ chưa tối ưu logic nguyên nhân.",
+                        "C. Sai thể chủ động thiếu động từ tobe quá khứ 'was'.",
+                        "D. Thiếu kí tự dấu phẩy đóng kết thúc mệnh đề quan hệ không xác định."
+                    ],
+                    whyCorrect: "Kết hợp câu sử dụng mệnh đề quan hệ không xác định bổ nghĩa cho danh từ riêng sở hữu cụ thể: dùng 'who' thay thế 'He', mệnh đề quan hệ phải đặt giữa hai dấu phẩy cô lập.",
+                    whyIncorrect: "Các phương án khác vi phạm lỗi thiếu dấu phẩy quy định hoặc chia sai thể bị động hành vi."
+                }
+            }
+        ];
+
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            if (type === 'correct') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); 
+                osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.08); 
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.35);
+            } else if (type === 'wrong') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(220.00, audioCtx.currentTime); 
+                osc.frequency.linearRampToValueAtTime(130.81, audioCtx.currentTime + 0.4); 
+                gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.45);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.45);
+            }
+        }
+
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let confettiArray = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function triggerConfetti() {
+            confettiArray = [];
+            for (let i = 0; i < 110; i++) {
+                confettiArray.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    r: Math.random() * 6 + 4,
+                    d: Math.random() * canvas.height,
+                    color: `hsl(${Math.random() * 360}, 100%, 60%)`,
+                    tilt: Math.random() * 10 - 5,
+                    tiltAngleIncremental: Math.random() * 0.07 + 0.02,
+                    tiltAngle: 0
+                });
+            }
+            animateConfetti();
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let active = false;
+            confettiArray.forEach((p) => {
+                p.tiltAngle += p.tiltAngleIncremental;
+                p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+                p.x += Math.sin(p.tiltAngle);
+                p.tilt = Math.sin(p.tiltAngle - p.r / 2) * 5;
+
+                if (p.y <= canvas.height) active = true;
+
+                ctx.beginPath();
+                ctx.lineWidth = p.r;
+                ctx.strokeStyle = p.color;
+                ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+                ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+                ctx.stroke();
+            });
+            if (active) {
+                requestAnimationFrame(animateConfetti);
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        function shuffleOptions(array) {
+            let currentIndex = array.length, temporaryValue, randomIndex;
+            while (currentIndex !== 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+            return array;
+        }
+
+        let studentAnswersLog = {};
+
+        function compileQuizInterface() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = "";
+
+            quizDatabase.forEach((q, index) => {
+                studentAnswersLog[q.id] = null;
+                const randomizedOptions = shuffleOptions([...q.options]);
+
+                const card = document.createElement('div');
+                card.className = 'quiz-card';
+                card.id = "card-block-" + q.id;
+
+                let gridHTML = "";
+                randomizedOptions.forEach((opt) => {
+                    gridHTML += `
+                        <button class="option-btn" id="opt-node-${q.id}-${opt.key}" onclick="verifyUserSelection(${q.id}, '${opt.key}', '${q.correctKey}')">
+                            <strong>${opt.key}.</strong> ${opt.text}
+                        </button>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="question-header">
+                        <span class="badge">Câu ${index + 51}</span>
+                        <div class="question-text">${q.prompt}</div>
+                    </div>
+                    <div class="options-grid">
+                        ${gridHTML}
+                    </div>
+                    <div class="explanation-box" id="explain-box-${q.id}">
+                        <div class="exp-title">💡 Phân Tích Lời Giải Từ Ms Lê Hằng English:</div>
+                        <div class="exp-section"><strong>1. Dịch nghĩa câu gốc:</strong><br>${q.explanation.translation}</div>
+                        <div class="exp-section">
+                            <strong>2. Phân tích ngữ pháp các phương án:</strong>
+                            <div class="sub-options-desc">
+                                ${q.explanation.vocab.join('<br>')}
+                            </div>
+                        </div>
+                        <div class="exp-section"><strong>3. Vì sao đáp án [${q.correctKey}] đúng:</strong><br>${q.explanation.whyCorrect}</div>
+                        <div class="exp-section"><strong>4. Vì sao các phương án khác sai:</strong><br>${q.explanation.whyIncorrect}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function verifyUserSelection(questionId, userKey, correctKey) {
+            if (studentAnswersLog[questionId] !== null) return;
+
+            const card = document.getElementById("card-block-" + questionId);
+            const selectedBtn = document.getElementById("opt-node-" + questionId + "-" + userKey);
+            const correctBtn = document.getElementById("opt-node-" + questionId + "-" + correctKey);
+            const explanationBlock = document.getElementById("explain-box-" + questionId);
+
+            const buttons = card.querySelectorAll('.option-btn');
+            buttons.forEach(b => b.classList.add('disabled'));
+
+            if (userKey === correctKey) {
+                studentAnswersLog[questionId] = true;
+                selectedBtn.classList.add('correct');
+                playSound('correct');
+                triggerConfetti();
+            } else {
+                studentAnswersLog[questionId] = false;
+                selectedBtn.classList.add('wrong');
+                correctBtn.classList.add('correct');
+                card.classList.add('shake');
+                playSound('wrong');
+                setTimeout(() => card.classList.remove('shake'), 450);
+            }
+
+            explanationBlock.style.display = "block";
+        }
+
+        function calculateFinalScore() {
+            let total = quizDatabase.length;
+            let correctCount = 0;
+            let answeredCount = 0;
+
+            for (const id in studentAnswersLog) {
+                if (studentAnswersLog[id] !== null) {
+                    answeredCount++;
+                    if (studentAnswersLog[id] === true) {
+                        correctCount++;
+                    }
+                }
+            }
+
+            if (answeredCount < total) {
+                alert(`Các con ơi, mình mới làm được ${answeredCount}/${total} câu thôi! Hãy hoàn thành hết các câu còn lại trước khi xem điểm tổng kết nhé! 💕`);
+                return;
+            }
+
+            const percentage = (correctCount / total) * 100;
+            let feedbackText = "";
+
+            if (percentage < 50) {
+                feedbackText = "Điểm lần này chưa cao lắm, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else if (percentage >= 60 && percentage <= 80) {
+                feedbackText = "Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else if (percentage >= 90) {
+                feedbackText = "Làm tốt lắm, con cố gắng ring điểm 10 ở lần sau nha!";
+            } else {
+                feedbackText = "Con học rất tốt, chú ý rà soát kỹ lại một số câu bẫy từ loại để đạt điểm tuyệt đối ở lần làm đề tới nhé!";
+            }
+
+            document.getElementById('score-text').innerText = `${correctCount} / ${total}`;
+            document.getElementById('comment-text').innerText = `Nhận xét từ Ms Lê Hằng: "${feedbackText}"`;
+            
+            document.getElementById('result-modal').classList.add('show');
+            if(percentage >= 60) {
+                triggerConfetti();
+            }
+        }
+
+        function closePopup() {
+            document.getElementById('result-modal').classList.remove('show');
+        }
+
+        function reloadQuizEngine() {
+            closePopup();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            compileQuizInterface();
+        }
+
+        window.onload = function() {
+            compileQuizInterface();
+        };
+    </script>
+</body>
+</html>
